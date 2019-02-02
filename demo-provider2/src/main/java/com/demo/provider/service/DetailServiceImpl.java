@@ -24,6 +24,7 @@ import com.demo.provider.mapper.DmDetailMapper;
 import com.demo.provider.pojo.po.DmDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Title: DetailServiceImpl
@@ -45,12 +46,13 @@ public class DetailServiceImpl implements DetailService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Result addDetail(Info info) throws Exception {
         DmDetail detail = new DmDetail();
         detail.setDmDetailName(info.getDetailName());
         detail.setDmDetailGender(info.getDetailGender());
         this.detailMapper.insert(detail);
-        int a = 1 / 0;
+//        int a = 1 / 0;
         return Result.ok();
     }
 }

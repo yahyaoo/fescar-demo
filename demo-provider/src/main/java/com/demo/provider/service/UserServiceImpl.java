@@ -27,6 +27,7 @@ import com.demo.provider.mapper.DmUserMapper;
 import com.demo.provider.pojo.po.DmUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Title: UserServiceImpl
@@ -51,6 +52,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     @GlobalTransactional
     public Result addUser(Info info) throws Exception {
         DmUser user = new DmUser();
