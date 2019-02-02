@@ -1,0 +1,53 @@
+server:
+  port: 8082
+
+
+spring:
+  #应用名称
+  application:
+    name: demo-provider2
+
+  #数据源配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.22.131:3306/demo?useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    poolPingConnectionsNotUsedFor: 60000
+    removeAbandoned: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    minIdle: 1
+    validationQuery: SELECT 1 FROM DUAL
+    initialSize: 5
+    maxWait: 60000
+    poolPreparedStatements: false
+    filters: stat,wall
+    testOnBorrow: false
+    testWhileIdle: true
+    minEvictableIdleTimeMillis: 300000
+    timeBetweenEvictionRunsMillis: 60000
+    testOnReturn: false
+    maxActive: 50
+    druid:
+      user: admin
+      password: admin
+
+#mybatis 配置
+mybatis:
+  type-aliases-package: com.demo.provider.pojo.po
+  mapper-locations: classpath:com.demo.provider.mapper/*.xml
+
+dubbo:
+  application:
+    name: demo-provider2
+    qos-enable: false
+  registry:
+    address: zookeeper://192.168.22.131:2181
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 20881
+  scan:
+    base-packages: com.demo.provider
+
