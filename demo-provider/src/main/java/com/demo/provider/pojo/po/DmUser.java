@@ -1,9 +1,14 @@
 package com.demo.provider.pojo.po;
 
-import java.io.Serializable;
-
-public class DmUser implements Serializable {
-    private static final long serialVersionUID = 5620609206524996229L;
+/**
+ * Title: DmUser
+ * Description:  TODO (这里用一句话描述这个类的作用)
+ *
+ * @author yuhong
+ * @Company com.jdschool
+ * @date 2019/2/2 16:56
+ */
+public class DmUser {
     private Integer dmUserId;
 
     private String dmUserPassword;

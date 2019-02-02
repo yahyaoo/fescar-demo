@@ -1,5 +1,13 @@
 package com.demo.provider.pojo.po;
 
+/**
+ * Title: DmDetail
+ * Description:  TODO (这里用一句话描述这个类的作用)
+ *
+ * @author yuhong
+ * @Company com.jdschool
+ * @date 2019/2/2 16:58
+ */
 public class DmDetail {
     private Integer dmDetailId;
 
